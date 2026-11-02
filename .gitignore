@@ -1,0 +1,43 @@
+# Environment and secrets
+.env
+.env.local
+*.env
+!.env.example
+*.pem
+*.key
+
+# Java and Maven
+footprint-service/target/
+**/target/
+*.class
+.mvn/wrapper/maven-wrapper.jar
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE and OS
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.DS_Store
+Thumbs.db
+*.log
+
+# Database data directories
+pgdata/
+data/
