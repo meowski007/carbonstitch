@@ -1,0 +1,32 @@
+{
+  "model_version": "1.0.0",
+  "selected_model": "RandomForestRegressor",
+  "best_mae": 0.9799,
+  "metrics": {
+    "LinearRegression": {
+      "mae": 1.8462,
+      "rmse": 2.8789,
+      "r2": 0.8546
+    },
+    "RandomForestRegressor": {
+      "mae": 0.9799,
+      "rmse": 1.445,
+      "r2": 0.9634
+    }
+  },
+  "dataset_size": 5000,
+  "test_size": 1000,
+  "features": {
+    "categorical": [
+      "category",
+      "main_material",
+      "country",
+      "transport_mode"
+    ],
+    "numerical": [
+      "weight_kg",
+      "distance_km"
+    ]
+  },
+  "target": "total_kg_co2e"
+}
