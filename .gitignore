@@ -40,4 +40,5 @@ Thumbs.db
 
 # Database data directories
 pgdata/
-data/
+/data/
+!ml-service/app/data/
