@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:carbonstitch_test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  flyway:
+    enabled: false
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=10m
+
+app:
+  ml-service:
+    url: http://localhost:8089
+    connect-timeout-ms: 500
+    read-timeout-ms: 1000
+    max-retries: 1
+  async:
+    core-pool-size: 2
+    max-pool-size: 4
+    queue-capacity: 20
+    thread-name-prefix: "test-batch-"
