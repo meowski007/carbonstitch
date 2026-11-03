@@ -12,7 +12,10 @@ target-version = "py311"
 select = ["E", "F", "I", "W", "UP", "B"]
 ignore = ["B008"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
-addopts = "-p no:anyio -p no:asyncio"
+addopts = "-p no:anyio"
