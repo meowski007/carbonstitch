@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/carbonstitch
+    username: postgres
+    password: postgres
+
+app:
+  ml-service:
+    url: http://ml-service:8000
