@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -71,10 +72,12 @@ def generate_synthetic_dataset(
     transport_modes = list(TRANSPORT_FACTORS.keys())
 
     cat_choices = rng.choice(categories, size=n_samples)
-    weights = np.array([
-        rng.uniform(CATEGORY_WEIGHT_RANGES[cat][0], CATEGORY_WEIGHT_RANGES[cat][1])
-        for cat in cat_choices
-    ]).round(3)
+    weights = np.array(
+        [
+            rng.uniform(CATEGORY_WEIGHT_RANGES[cat][0], CATEGORY_WEIGHT_RANGES[cat][1])
+            for cat in cat_choices
+        ]
+    ).round(3)
 
     mat_choices = rng.choice(materials, size=n_samples)
     country_choices = rng.choice(countries, size=n_samples)
@@ -97,15 +100,17 @@ def generate_synthetic_dataset(
         total = max(0.1, round(mat_emission + mfg_emission + t_emission + noise, 3))
         total_emissions.append(total)
 
-    df = pd.DataFrame({
-        "category": cat_choices,
-        "weight_kg": weights,
-        "main_material": mat_choices,
-        "country": country_choices,
-        "transport_mode": transport_choices,
-        "distance_km": distances,
-        "total_kg_co2e": total_emissions,
-    })
+    df = pd.DataFrame(
+        {
+            "category": cat_choices,
+            "weight_kg": weights,
+            "main_material": mat_choices,
+            "country": country_choices,
+            "transport_mode": transport_choices,
+            "distance_km": distances,
+            "total_kg_co2e": total_emissions,
+        }
+    )
 
     if output_path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,4 +130,6 @@ if __name__ == "__main__":
         default=Path(__file__).resolve().parents[2] / "artifacts" / "synthetic_garments.csv",
     )
     args = parser.parse_args()
-    generate_synthetic_dataset(n_samples=args.samples, random_seed=args.seed, output_path=args.output)
+    generate_synthetic_dataset(
+        n_samples=args.samples, random_seed=args.seed, output_path=args.output
+    )
